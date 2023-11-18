@@ -1,6 +1,6 @@
 # Title
 
-**Abstract:** <span style="color:blue;">Gestion du Personnel pour DataWare</span>
+**Abstract:** <font color="blue">Gestion du Personnel pour DataWare</font>
 ## Papar Information
 - Title:  `paper name`
 - Authors:  `A`,`B`,`C`
