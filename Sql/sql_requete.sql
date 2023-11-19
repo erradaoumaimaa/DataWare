@@ -23,7 +23,6 @@ CREATE TABLE IF NOT EXISTS Users (
     Date_naissance DATE,
     Adresse VARCHAR(255),
     Password VARCHAR(255) NOT NULL, 
-    EstAdmin BOOLEAN DEFAULT FALSE,
     FOREIGN KEY (ID_Equipe) REFERENCES Equipes(ID_Equipe)
 );
 

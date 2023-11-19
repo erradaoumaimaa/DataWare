@@ -8,9 +8,10 @@ Abstract:xxx
 - Full-preprint: [paper position]()
 - Video: [video position]()
 
-## Install 
-- xampp
-
+## Install & Dependence
+- python
+- pytorch
+- numpy
 
 ## Dataset Preparation
 | Dataset | Download |
@@ -41,11 +42,10 @@ Abstract:xxx
 |—— actions
 |    |—— create_user.php
 |    |—— delete_user.php
+|    |—— Join_Arrays.php
+|    |—— logout.php
 |    |—— read_user.php
 |    |—— update_user.php
-|—— admin
-|    |—— index.php
-|    |—— list_equipe.php
 |—— css
 |    |—— all.css
 |    |—— bootstrap.css
@@ -1764,36 +1764,42 @@ Abstract:xxx
 |            |—— fa-solid-900.woff
 |            |—— fa-solid-900.woff2
 |    |—— style.css
-|—— employee
-|    |—— index.php
-|    |—— style.css
 |—— img
 |    |—— add-user-svgrepo-com.svg
-|    |—— empl1.jpg
-|    |—— emplu2_m.jpg
-|    |—— emply3_af.jpg
-|    |—— emply4_am.jpg
+|    |—— logo.png
 |—— includes
 |    |—— biblio_bootstrap.php
 |    |—— connexion.php
 |    |—— head.php
-|    |—— mysqli_close.php
 |    |—— navbar_admin.php
 |    |—— session.php
 |—— index.php
 |—— js
 |    |—— bootstrap.bundle.js
 |    |—— jQuery.js
-|—— login
-|    |—— logout.php
+|—— list_equipe.php
+|—— main.js
 |—— Sql
 |    |—— sql_requete.sql
 |—— UML
 |    |—— Link_UML.txt
 ```
 ## Code Details
-
-
+### Tested Platform
+- software
+  ```
+  OS: Debian unstable (May 2021), Ubuntu LTS
+  Python: 3.8.5 (anaconda)
+  PyTorch: 1.7.1, 1.8.1
+  ```
+- hardware
+  ```
+  CPU: Intel Xeon 6226R
+  GPU: Nvidia RTX3090 (24GB)
+  ```
+### Hyper parameters
+```
+```
 ## References
 - [paper-1]()
 - [paper-2]()
@@ -1801,7 +1807,8 @@ Abstract:xxx
 - [code-2](https://github.com)
   
 ## License
-ER-RADA OUMAIMA
 
+## Citing
+If you use xxx,please use the following BibTeX entry.
 ```
 ```

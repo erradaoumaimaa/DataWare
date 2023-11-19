@@ -1,14 +1,25 @@
-<?php  require 'C:\xampp\htdocs\DataWare\includes\connexion.php';
-    include './actions/Join_Arrays.php';
+<?php require './includes/connexion.php'; 
 ?>
-<?php include './actions/delete_user.php'; ?>
-
 <!-- bibliotheque Bootstrap(JQUERY JS) FontAwsome(Icon) -->
 <?php include './includes/biblio_bootstrap.php'; ?>
+<?php
+    $sql = "SELECT 
+    equipes.ID_Eq,
+    equipes.Name_Eq,
+    equipes.Date_Eq,
+    equipes.Desc_Eq
+FROM equipes
+";
+// Exécution de la requête
+$result = mysqli_query($db, $sql);
 
+// Vérifier si la requête a réussi
+if (!$result) {
+    die("Erreur dans la requête : " . mysqli_error($db));
+}
+?>
 <!-- Inclut la partie head du html  -->
 <?php include './includes/head.php'; ?>
-
 <!-- Material Icons -->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -25,7 +36,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         border-collapse: collapse;
         overflow: hidden;
-        color: #333333; 
+        color: #333333; /* Couleur du texte */
     }
 
     .custom-table th,
@@ -78,66 +89,63 @@
         background-color: #fff;
     }
     .text-info {
-      color: #FCC72C !important;
+    color: #FCC72C !important;
 }
 </style>
 </head>
 <!--  NavBar  -->
-<?php include './includes/navbar_admin.php'; ?>
+<?php include './includes/navbar_admin.php'?>
 <body>
 <div class="container mt-5">
     <div class="table-title">
         <div class="row">
             <div class="col-sm-12 text-center"> <!-- Utilisation de text-center pour centrer le titre -->
-                <h2 class="text-info"><b > Liste Agents:</b></h2>
+                <h2 class="text-info"><b > Liste Equipes:</b></h2>
             </div>
         </div>
         <div class="row mt-3">
             <div class="col-sm-6 mx-auto"></div> 
             <div class="col-sm-6 text-right"> 
                 <button type="button" class="btn btn-primary ajout-agent-btn" data-toggle="modal" data-target="#ajoutMembreModal">
-                    <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i> Ajouter Agent
+                    <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i> Ajouter Equipe
                 </button>
             </div>
         </div>
     </div>
-        <?php include './actions/create_user.php'; ?>
-        <!-- Tableau pour afficher la liste des utilisateurs -->
-        <table class="table table-dark table-striped custom-table" >
-            <thead>
+    <!-- Tableau pour afficher la liste des utilisateurs -->
+    <table class="table table-dark table-striped custom-table" style="margin-left: -3.3rem;">
+       
+    <div class="table-responsive">
+    <table class="table table-dark table-striped custom-table">
+        <thead>
             <tr>
-                <th style="width: 10%; padding-right: 10px;">Matricule</th>
-                <th style="width: 15%; padding-right: 10px;">Nom</th>
-                <th style="width: 20%; padding-right: 10px;">Email</th>
-                <th style="width: 10%; padding-right: 10px;">Poste</th>
-                <th style="width: 10%; padding-right: 10px;">Statut</th>
-                <th style="width: 10%; padding-right: 10px;">Naissance</th>
-                <th style="width: 10%; padding-right: 10px;">Equipe</th>
-                <th style="width: 10%; padding-right: 10px;">Action</th>
+            <th style="width: 5%;" class="text-nowrap">ID</th>
+                <th>Nom</th>
+                <th>Date</th>
+                <th>Descrp</th>
+                <th>Action</th>
             </tr>
-            </thead>
-            <tbody>
-                <?php
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "<tr>";
-                    echo "<td>{$row['Matricule']}</td>";
-                    echo "<td>{$row['NomPrenom']}</td>";
-                    echo "<td>{$row['Email']}</td>";
-                    echo "<td>{$row['Role']}</td>";
-                    echo "<td>{$row['Statut']}</td>";
-                    echo "<td>{$row['Date_naissance']}</td>";
-                    echo "<td>{$row['NomEquipe']}</td>";
-                    echo "<td>
-                              <a href='./actions/delete_user.php?id={$row['ID_Users']}' class='action-column delete' data-toggle='tooltip' title='Delete' onclick='confirmDelete(\"{$row['NomPrenom']}\", {$row['ID_Users']}, event);'>
-                                  <i class='material-icons text-danger'>&#xE872;</i>
-                              </a>
-                    </td>";
-                }
-                ?>
-            </tbody>
-        </table>
-    </div>
-   
+        </thead>
+        <tbody>
+        <?php
+        // Boucle pour afficher les résultats
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>{$row['ID_Eq']}</td>";
+            echo "<td>{$row['Name_Eq']}</td>";
+            echo "<td>{$row['Date_Eq']}</td>";
+            echo "<td>{$row['Desc_Eq']}</td>";
+            echo "<td>
+                    <a href='#' class='action-column 'class='edit' data-toggle='modal'><i class='material-icons text-warning' data-toggle='tooltip' title='Edit'>&#xE254;</i></a>
+                    <a href='#' class='action-column 'class='delete' data-toggle='modal'><i class='material-icons text-danger' data-toggle='tooltip' title='Delete'>&#xE872;</i></a>
+                </td>";
+            echo "</tr>";
+        }
+        ?>
+            <!-- Les données de la base de données seront affichées ici -->
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

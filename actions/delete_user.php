@@ -1,7 +1,4 @@
-<?php require'../includes/connexion.php' ?>
-<?php
-
-
+<?php  require 'C:\xampp\htdocs\DataWare\includes\connexion.php';
 // Vérifiez si l'ID de l'utilisateur est présent dans l'URL
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Échappez les données pour éviter les injections SQL
@@ -16,7 +13,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
     // Vérifiez si la suppression a réussi
     if ($result) {
         // Redirigez vers la page principale après la suppression
-        header('Location: ../admin/index.php');
+        header('Location: ../index.php');
         exit();
     } else {
         // Gérez les erreurs de suppression ici
