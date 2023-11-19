@@ -15,7 +15,7 @@
         </ul>
         <ul class="navbar-nav">
             <li class="nav-link active">
-                <a href="../actions/logout.php" class="nav-link">
+                <a href="./actions/logout.php" class="nav-link">
                     <i class="fas fa-sign-out-alt"></i> Déconnexion 
                 </a>
             </li>
